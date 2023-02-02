@@ -1,0 +1,35 @@
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+ * List item
+ * Another list item
+
+=====
+
+ 1. First *item*
+ 2. Second `item`
+ 3. Third [A link](https://gnome.org)
+ 4. Forth **item**
+
+```
+#pragma once
+
+#include <glib.h>
+
+G_BEGIN_DECLS
+
+typedef struct _foo_t foo_t;
+
+foo_t *foo_new  (void);
+void   foo_free (foo_t *foo);
+
+G_END_DECLS
+```
+

@@ -1,0 +1,11 @@
+#!/usr/bin/env gjs
+
+const Gtk = imports.gi.Gtk;
+const GObject = imports.gi.GObject;
+
+class MyWindow extends Gtk.Window {
+    _init(title) {
+        super._init();
+        self.set_title(title);
+    }
+}

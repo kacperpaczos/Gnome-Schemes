@@ -1,0 +1,100 @@
+SCHEMES_STYLE ("basic",
+               "text",
+               _("Text"),
+               _("Styling for text"),
+               (SCHEMES_STYLE_OPTIONS_HAS_FOREGROUND |
+                SCHEMES_STYLE_OPTIONS_HAS_BACKGROUND));
+SCHEMES_STYLE ("basic",
+               "selection",
+               _("Selection"),
+               _("Styling for selected text"),
+               (SCHEMES_STYLE_OPTIONS_HAS_FOREGROUND |
+                SCHEMES_STYLE_OPTIONS_HAS_BACKGROUND));
+SCHEMES_STYLE ("basic",
+               "selection-unfocused",
+               _("Unfocused Selection"),
+               _("Styling for selected text in an unfocused window"),
+               (SCHEMES_STYLE_OPTIONS_HAS_FOREGROUND |
+                SCHEMES_STYLE_OPTIONS_HAS_BACKGROUND));
+
+SCHEMES_STYLE ("cursors",
+               "cursor",
+               _("Cursor"),
+               _("Styling for insertion cursor"),
+               SCHEMES_STYLE_OPTIONS_HAS_FOREGROUND);
+SCHEMES_STYLE ("cursors",
+               "secondary-cursor",
+               _("Secondary Cursor"),
+               _("Styling for secondary cursors"),
+               SCHEMES_STYLE_OPTIONS_HAS_FOREGROUND);
+
+SCHEMES_STYLE ("drawings",
+               "right-margin",
+               _("Right Margin"),
+               _("Style for the right margin background"),
+               (SCHEMES_STYLE_OPTIONS_HAS_FOREGROUND |
+                SCHEMES_STYLE_OPTIONS_HAS_BACKGROUND));
+SCHEMES_STYLE ("drawings",
+               "map-overlay",
+               _("Map Overlay"),
+               _("Style for the slider above the overlay map"),
+               SCHEMES_STYLE_OPTIONS_HAS_BACKGROUND);
+SCHEMES_STYLE ("drawings",
+               "draw-spaces",
+               _("Draw Spaces"),
+               _("Styling used when drawing spaces"),
+               SCHEMES_STYLE_OPTIONS_HAS_FOREGROUND);
+SCHEMES_STYLE ("drawings",
+               "background-pattern",
+               _("Background Pattern"),
+               _("Styling used when background patterns"),
+               SCHEMES_STYLE_OPTIONS_HAS_BACKGROUND);
+
+SCHEMES_STYLE ("lines",
+               "line-numbers",
+               _("Line Numbers"),
+               _("Styling for line numbers"),
+               (SCHEMES_STYLE_OPTIONS_HAS_FOREGROUND |
+                SCHEMES_STYLE_OPTIONS_HAS_BACKGROUND));
+SCHEMES_STYLE ("lines",
+               "line-numbers-border",
+               _("Line Numbers Border"),
+               _("Styling for border between numbers and text"),
+               SCHEMES_STYLE_OPTIONS_HAS_BACKGROUND);
+SCHEMES_STYLE ("lines",
+               "current-line",
+               _("Current Line Background"),
+               _("Styling for current line background"),
+               SCHEMES_STYLE_OPTIONS_HAS_BACKGROUND);
+SCHEMES_STYLE ("lines",
+               "current-line-number",
+               _("Current Line Number"),
+               _("Styling for current line number"),
+               (SCHEMES_STYLE_OPTIONS_HAS_FOREGROUND |
+                SCHEMES_STYLE_OPTIONS_HAS_BACKGROUND |
+                SCHEMES_STYLE_OPTIONS_HAS_BOLD));
+
+SCHEMES_STYLE ("brackets",
+               "bracket-match",
+               _("Bracket Match"),
+               _("Styling for bracket matches"),
+               SCHEMES_STYLE_OPTIONS_HAS_ALL);
+SCHEMES_STYLE ("brackets",
+               "bracket-mismatch",
+               _("Bracket Mismatch"),
+               _("Styling for bracket mismatches"),
+               SCHEMES_STYLE_OPTIONS_HAS_ALL);
+
+SCHEMES_STYLE ("search",
+               "search-match",
+               _("Search Match"),
+               _("Styling for search matches"),
+               SCHEMES_STYLE_OPTIONS_HAS_ALL);
+
+SCHEMES_STYLE ("snippets",
+               "snippet-focus",
+               _("Snippet Focus"),
+               _("Styling for the focused snippet"),
+               SCHEMES_STYLE_OPTIONS_HAS_ALL);
+
+

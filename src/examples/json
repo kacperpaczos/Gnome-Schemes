@@ -1,0 +1,9 @@
+{
+	"key" : "value",
+	"boolean" : true,
+	"double" : 1.23e4,
+	"integer": 123,
+	"array" : [1,2,3],
+	"string" : "string",
+	"object" : { "key" : "value" }
+}
