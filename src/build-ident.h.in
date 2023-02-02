@@ -1,0 +1,2 @@
+#pragma once
+#define BUILD_IDENTIFIER "@VCS_TAG@"

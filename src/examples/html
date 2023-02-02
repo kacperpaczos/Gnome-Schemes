@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <style>
+body {
+  background: blue;
+  color: white;
+}
+    </style>
+  </head>
+  <body>
+    <p>This is some text.</p>
+    <a href="https://gnome.org">GNOME</a>
+  </body>
+</html>

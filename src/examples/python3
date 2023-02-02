@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+from gi.repository import GLib
+from gi.repository import Gtk
+
+class MyWindow(Gtk.Window):
+    """
+    Description of MyWindow.
+    """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+a = [1, 2, 3]
+b = ('a', 'b', 'c')
+c = True or False or None
+d = 'a %(format)s string\n' % {'format': 'format'}
+
+for i in a:
+    if i in b:
+        pass

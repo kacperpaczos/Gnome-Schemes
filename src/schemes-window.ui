@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <requires lib="Panel" version="1.0"/>
+  <template class="SchemesWindow" parent="AdwApplicationWindow">
+    <property name="title">Schemes</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="AdwHeaderBar">
+            <child type="title">
+              <object class="AdwViewSwitcher">
+                <property name="policy">wide</property>
+                <property name="stack">stack</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkMenuButton" id="primary_menu_button">
+                <property name="primary">true</property>
+                <property name="icon-name">open-menu-symbolic</property>
+                <property name="menu-model">primary_menu</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkMenuButton">
+                <property name="icon-name">document-properties-symbolic</property>
+                <property name="menu-model">preview_menu</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwViewStack" id="stack">
+            <child>
+              <object class="AdwViewStackPage" id="informative">
+                <property name="name">general</property>
+                <property name="title" translatable="yes">General</property>
+                <property name="icon-name">document-edit-symbolic</property>
+                <property name="child">
+                  <object class="GtkScrolledWindow">
+                    <property name="vexpand">true</property>
+                    <property name="propagate-natural-height">true</property>
+                    <property name="propagate-natural-width">true</property>
+                    <property name="hscrollbar-policy">never</property>
+                    <child>
+                      <object class="AdwPreferencesPage">
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <child>
+                              <object class="AdwEntryRow" id="name">
+                                <property name="title" translatable="yes">Scheme Name</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">A unique name that will be displayed to users within applications. This name may be translated into other languages.</property>
+                                <property name="wrap">true</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="xalign">0</property>
+                                <property name="margin-top">6</property>
+                                <attributes>
+                                  <attribute name="foreground-alpha" value="33000"/>
+                                  <attribute name="scale" value="0.8333"/>
+                                </attributes>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <child>
+                              <object class="AdwEntryRow" id="id">
+                                <property name="title" translatable="yes">Scheme Identifier</property>
+                                <signal name="changed" handler="on_id_changed_cb" swapped="true"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">A unique identifier for your application. It should be lowercase, may not contain spaces, but may use dashes.</property>
+                                <property name="wrap">true</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="xalign">0</property>
+                                <property name="margin-top">6</property>
+                                <attributes>
+                                  <attribute name="foreground-alpha" value="33000"/>
+                                  <attribute name="scale" value="0.8333"/>
+                                </attributes>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <child>
+                              <object class="AdwEntryRow" id="author">
+                                <property name="title" translatable="yes">Author</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <child>
+                              <object class="AdwEntryRow" id="description">
+                                <property name="title" translatable="yes">Description</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <property name="title" translatable="yes">Metadata</property>
+                            <child>
+                              <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Dark Scheme</property>
+                                <property name="subtitle" translatable="yes">If the scheme is intended for dark mode.</property>
+                                <property name="activatable-widget">dark</property>
+                                <child>
+                                  <object class="GtkSwitch" id="dark">
+                                    <property name="halign">end</property>
+                                    <property name="valign">center</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <child>
+                              <object class="AdwEntryRow" id="alternate">
+                                <property name="title" translatable="yes">Alternate Scheme Identifier</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Applications may use the metadata provided to enhance users experience such as switching between light and dark modes.</property>
+                                <property name="wrap">true</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="xalign">0</property>
+                                <property name="margin-top">6</property>
+                                <attributes>
+                                  <attribute name="foreground-alpha" value="33000"/>
+                                  <attribute name="scale" value="0.8333"/>
+                                </attributes>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwViewStackPage" id="palette">
+                <property name="name">palette</property>
+                <property name="title" translatable="yes">Color Palette</property>
+                <property name="icon-name">schemes-palette-symbolic</property>
+                <property name="child">
+                  <object class="GtkScrolledWindow">
+                    <property name="vexpand">true</property>
+                    <property name="propagate-natural-height">true</property>
+                    <property name="propagate-natural-width">true</property>
+                    <property name="hscrollbar-policy">never</property>
+                    <child>
+                      <object class="AdwPreferencesPage">
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <child>
+                              <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Import Color Palette…</property>
+                                <property name="subtitle" translatable="yes">Load color palette compatible with “The GIMP”</property>
+                                <property name="activatable-widget">import_button</property>
+                                <child>
+                                  <object class="GtkButton" id="import_button">
+                                    <property name="valign">center</property>
+                                    <property name="use-underline">true</property>
+                                    <property name="label" translatable="yes">_Import…</property>
+                                    <property name="action-name">scheme.import-palette</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup" id="colors_group">
+                            <property name="title" translatable="yes">Color Palette</property>
+                            <property name="visible">false</property>
+                            <child>
+                              <object class="GtkListBox" id="colors">
+                                <style>
+                                  <class name="boxed-list"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <property name="margin-top">24</property>
+                            <property name="title" translatable="yes">Add Color</property>
+                            <child>
+                              <object class="AdwEntryRow" id="color_name">
+                                <property name="title" translatable="yes">Name</property>
+                                <signal name="changed" handler="update_add_color" swapped="true"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Name for the color. It may not start with # and spaces are discouraged.</property>
+                                <property name="use-markup">true</property>
+                                <property name="wrap">true</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="xalign">0</property>
+                                <property name="margin-top">12</property>
+                                <property name="margin-bottom">12</property>
+                                <attributes>
+                                  <attribute name="foreground-alpha" value="33000"/>
+                                  <attribute name="scale" value="0.8333"/>
+                                </attributes>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <child>
+                              <object class="AdwEntryRow" id="color_rgba">
+                                <property name="title" translatable="yes">Color</property>
+                                <signal name="changed" handler="validate_color_cb"/>
+                                <signal name="entry-activated" handler="on_color_activate_cb" swapped="true"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Name and color code for a new color in the palette. The color code may be in hex, &lt;tt&gt;rgb()&lt;/tt&gt;, or &lt;tt&gt;rgba()&lt;/tt&gt; format.</property>
+                                <property name="use-markup">true</property>
+                                <property name="wrap">true</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="xalign">0</property>
+                                <property name="margin-top">12</property>
+                                <property name="margin-bottom">12</property>
+                                <attributes>
+                                  <attribute name="foreground-alpha" value="33000"/>
+                                  <attribute name="scale" value="0.8333"/>
+                                </attributes>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="add_color">
+                                <property name="label" translatable="yes">_Add Color</property>
+                                <property name="use-underline">true</property>
+                                <property name="sensitive">false</property>
+                                <property name="halign">end</property>
+                                <signal name="clicked" handler="add_color_clicked_cb" swapped="true"/>
+                                <style>
+                                  <class name="suggested-action"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwViewStackPage" id="styles">
+                <property name="name">styles</property>
+                <property name="title" translatable="yes">Styles</property>
+                <property name="icon-name">lang-function-symbolic</property>
+                <property name="child">
+                  <object class="GtkPaned">
+                    <property name="orientation">horizontal</property>
+                    <property name="position">500</property>
+                    <child type="end">
+                      <object class="GtkBox">
+                        <property name="orientation">horizontal</property>
+                        <child>
+                          <object class="GtkScrolledWindow">
+                            <property name="vscrollbar-policy">external</property>
+                            <property name="hexpand">true</property>
+                            <child>
+                              <object class="GtkSourceView" id="view">
+                                <style>
+                                  <class name="preview"/>
+                                </style>
+                                <property name="auto-indent">true</property>
+                                <property name="show-line-numbers">true</property>
+                                <property name="highlight-current-line">true</property>
+                                <property name="monospace">true</property>
+                                <property name="indent-width">-1</property>
+                                <property name="tab-width">8</property>
+                                <property name="right-margin-position">80</property>
+                                <property name="show-right-margin">true</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="left-margin">6</property>
+                                <property name="top-margin">8</property>
+                                <property name="bottom-margin">8</property>
+                                <property name="right-margin">8</property>
+                                <property name="buffer">
+                                  <object class="GtkSourceBuffer" id="preview">
+                                    <signal name="notify::language" handler="on_notify_language_cb" swapped="true"/>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkSourceMap">
+                            <property name="hexpand">false</property>
+                            <property name="view">view</property>
+                            <property name="left-margin">6</property>
+                            <property name="right-margin">6</property>
+                            <property name="top-margin">5</property>
+                            <property name="bottom-margin">5</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child type="start">
+                      <object class="AdwPreferencesPage" id="styles_page">
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+  <object class="PanelThemeSelector" id="theme_selector">
+    <property name="action-name">app.style-variant</property>
+  </object>
+  <menu id="primary_menu">
+    <section>
+      <item>
+        <attribute name="custom">theme_selector</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">New Window</attribute>
+        <attribute name="accel">&lt;control&gt;n</attribute>
+        <attribute name="action">scheme.new</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Open</attribute>
+        <attribute name="accel">&lt;control&gt;o</attribute>
+        <attribute name="action">scheme.open</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Save</attribute>
+        <attribute name="accel">&lt;control&gt;s</attribute>
+        <attribute name="action">scheme.save</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Save _As</attribute>
+        <attribute name="accel">&lt;control&gt;&lt;shift&gt;s</attribute>
+        <attribute name="action">scheme.save-as</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_About Schemes</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+  <menu id="preview_menu">
+    <section>
+      <attribute name="label" translatable="yes">Show</attribute>
+      <item>
+        <attribute name="label" translatable="yes">Right Margin</attribute>
+        <attribute name="action">win.show-right-margin</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Line Numbers</attribute>
+        <attribute name="action">win.show-line-numbers</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Space Characters</attribute>
+        <attribute name="action">win.draw-spaces</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Enable Snippets</attribute>
+        <attribute name="action">win.enable-snippets</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="label" translatable="yes">Background Pattern</attribute>
+      <item>
+        <attribute name="label" translatable="yes">None</attribute>
+        <attribute name="action">win.background-pattern</attribute>
+        <attribute name="target" type="s">'none'</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Grid</attribute>
+        <attribute name="action">win.background-pattern</attribute>
+        <attribute name="target" type="s">'grid'</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="label" translatable="yes">Text Wrapping</attribute>
+      <item>
+        <attribute name="label" translatable="yes">None</attribute>
+        <attribute name="action">win.wrap-mode</attribute>
+        <attribute name="target" type="s">'none'</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Wrap at Word or Character</attribute>
+        <attribute name="action">win.wrap-mode</attribute>
+        <attribute name="target" type="s">'word-char'</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Wrap at Word</attribute>
+        <attribute name="action">win.wrap-mode</attribute>
+        <attribute name="target" type="s">'word'</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Highlight Current Line</attribute>
+        <attribute name="action">win.highlight-current-line</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="label" translatable="yes">Indentation</attribute>
+      <item>
+        <attribute name="label" translatable="yes">Insert Spaces</attribute>
+        <attribute name="action">win.insert-spaces-instead-of-tabs</attribute>
+      </item>
+      <submenu>
+        <attribute name="label" translatable="yes">Spaces Per Tab</attribute>
+        <item>
+          <attribute name="label" translatable="yes">2</attribute>
+          <attribute name="action">win.tab-width</attribute>
+          <attribute name="target" type="u">2</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">4</attribute>
+          <attribute name="action">win.tab-width</attribute>
+          <attribute name="target" type="u">4</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">6</attribute>
+          <attribute name="action">win.tab-width</attribute>
+          <attribute name="target" type="u">6</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">8</attribute>
+          <attribute name="action">win.tab-width</attribute>
+          <attribute name="target" type="u">8</attribute>
+        </item>
+      </submenu>
+    </section>
+    <section>
+      <submenu id="doc_types_menu">
+        <attribute name="label" translatable="yes">Document Type</attribute>
+        <section>
+        </section>
+      </submenu>
+    </section>
+  </menu>
+</interface>

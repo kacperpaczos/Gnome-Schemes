@@ -1,0 +1,172 @@
+/* my-object.c
+ *
+ * Copyright 2021 Christian Hergert <chergert@redhat.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+#include "config.h"
+
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
+
+#include "my-object.h"
+
+/**
+ * SECTION:myobject
+ * @Title: MyObject
+ * @Short_description: Description of MyObject
+ *
+ * This is a section header for a gtk-doc file.
+ *
+ * Since: 1.0
+ */
+
+struct _MyObject
+{
+	GObject parent_instance;
+};
+
+G_DEFINE_TYPE (MyObject, my_object, G_TYPE_OBJECT)
+
+enum {
+	PROP_0,
+	PROP_NAME,
+	N_PROPS
+};
+
+enum {
+	FROBNICATE,
+	N_SIGNALS
+};
+
+static GParamSpec *properties [N_PROPS];
+static guint signals [N_SIGNALS];
+
+MyObject *
+my_object_new (void)
+{
+	return g_object_new (MY_TYPE_OBJECT, NULL);
+}
+
+static void
+my_object_get_property (GObject    *object,
+                        guint       prop_id,
+                        GValue     *value,
+                        GParamSpec *pspec)
+{
+	MyObject *self = MY_OBJECT (object);
+
+	switch (prop_id)
+	{
+	case PROP_NAME:
+		g_value_set_string (value, my_object_get_name (self));
+		break;
+
+	default:
+		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	}
+}
+
+static void
+my_object_set_property (GObject      *object,
+                        guint         prop_id,
+                        const GValue *value,
+                        GParamSpec   *pspec)
+{
+	MyObject *self = MY_OBJECT (object);
+
+	switch (prop_id)
+	{
+	case PROP_NAME:
+		my_object_set_name (self, g_value_get_string (value));
+		break;
+
+	default:
+		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	}
+}
+
+static void
+my_object_class_init (MyObjectClass *klass)
+{
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	
+	object_class->get_property = my_object_get_property;
+	object_class->set_property = my_object_set_property;
+
+	/**
+	 * MyObject:name:
+	 *
+	 * The "name" property contains the name of the object.
+	 */
+	properties [PROP_NAME] =
+		g_param_spec_string ("name",
+		                     "Name",
+		                     "The name of the object",
+		                     NULL,
+		                     G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+	/**
+	 * MyObject::frobnicate:
+	 *
+	 * The "frobnicate" signal
+	 *
+	 * Returns: a boolean
+	 */
+	signals [FROBNICATE] =
+		g_signal_new ("frobnicate",
+		              G_TYPE_FROM_CLASS (klass),
+		              G_SIGNAL_RUN_LAST,
+		              G_STRUCT_OFFSET (MyObjectClass, frobnicate),
+		              NULL, NULL,
+		              NULL,
+		              G_TYPE_BOOLEAN, 2, G_TYPE_STRING, G_TYPE_ERROR);
+}
+
+static void
+my_object_init (MyObject *self)
+{
+}
+
+/**
+ * my_object_frobnicate:
+ * @self: a #MyObject
+ * @string: (nullable): a string or %NULL
+ * @error: a location for a #GError, or %NULL
+ *
+ * This is the description of a function.
+ *
+ * Returns: %TRUE if successful; otherwise %FALSE and @error is set.
+ *
+ * Since: 1.0
+ *
+ * See_also: https://gitlab.gnome.org/
+ */
+void
+my_object_frobnicate (MyObject    *self,
+                      const char  *string,
+                      GError     **error)
+{
+	g_return_val_if_fail (MY_IS_OBJECT (self), FALSE);
+
+	g_set_error (error,
+	             G_IO_ERROR,
+	             G_IO_ERROR_NOT_SUPPORTED,
+	             "An error occurred");
+
+	return FALSE;
+}

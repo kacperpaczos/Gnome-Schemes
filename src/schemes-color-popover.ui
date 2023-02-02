@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="SchemesColorPopover" parent="GtkPopover">
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="propagate-natural-height">true</property>
+        <property name="propagate-natural-width">true</property>
+        <child>
+          <object class="GtkListView" id="list">
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

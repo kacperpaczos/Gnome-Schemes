@@ -1,0 +1,7 @@
+data/me.hergert.Schemes.Devel.desktop.in
+data/me.hergert.Schemes.Devel.appdata.xml.in
+data/me.hergert.Schemes.Devel.gschema.xml
+src/schemes-window.ui
+src/main.c
+src/schemes-window.c
+

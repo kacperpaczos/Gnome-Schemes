@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/ui/">
+    <file preprocess="xml-stripblanks">schemes-color-row.ui</file>
+    <file preprocess="xml-stripblanks">schemes-style-row.ui</file>
+    <file preprocess="xml-stripblanks">schemes-window.ui</file>
+  </gresource>
+  <gresource prefix="/me/hergert/Schemes/">
+    <file>style.css</file>
+  </gresource>
+  <gresource prefix="/">
+    <file>examples/c</file>
+    <file>examples/cpp</file>
+    <file>examples/c-sharp</file>
+    <file>examples/css</file>
+    <file>examples/go</file>
+    <file>examples/haskell</file>
+    <file>examples/html</file>
+    <file>examples/js</file>
+    <file>examples/json</file>
+    <file>examples/lua</file>
+    <file>examples/markdown</file>
+    <file>examples/perl</file>
+    <file>examples/python3</file>
+    <file>examples/rust</file>
+    <file>examples/vala</file>
+    <file>examples/xml</file>
+  </gresource>
+</gresources>

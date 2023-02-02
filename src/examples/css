@@ -1,0 +1,13 @@
+window > scrolledwindow > textview:hover {
+  font-family: "monospace";
+  font-size: 1.2;
+  background: #fff;
+  color: #000;
+  text-decoration: underline;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  -gtk-icon-source: none;
+}
+
+#object:not(:selected) {
+  color: pink;
+}
