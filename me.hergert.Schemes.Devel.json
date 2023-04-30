@@ -9,8 +9,7 @@
         "--share=ipc",
         "--socket=fallback-x11",
         "--device=dri",
-        "--socket=wayland",
-        "--socket=session-bus"
+        "--socket=wayland"
     ],
     "cleanup" : [
         "/include",
@@ -41,22 +40,12 @@
             ]
         },
         {
-            "name" : "gtksourceview",
-            "buildsystem" : "meson",
-            "config-opts" : [
-                "-Dgtk_doc=false"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/gtksourceview.git"
-                }
-            ]
-        },
-        {
             "name" : "schemes",
             "builddir" : true,
             "buildsystem" : "meson",
+            "config-opts" : [
+                "-Ddevelopment=true"
+            ],
             "sources" : [
                 {
                     "type" : "git",

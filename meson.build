@@ -13,7 +13,7 @@ i18n = import('i18n')
 gnome = import('gnome')
 cc = meson.get_compiler('c')
 
-is_development = minor_version % 2 == 1
+is_development = get_option('development')
 
 if is_development
   app_id = '@0@.Devel'.format(app_id)

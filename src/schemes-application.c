@@ -83,7 +83,9 @@ style_variant_to_color_scheme (GValue   *value,
                                GVariant *variant,
                                gpointer  user_data)
 {
-  if (g_strcmp0 (g_variant_get_string (variant, NULL), "dark") == 0)
+  if (g_strcmp0 (g_variant_get_string (variant, NULL), "default") == 0)
+    g_value_set_enum (value, ADW_COLOR_SCHEME_PREFER_LIGHT);
+  else if (g_strcmp0 (g_variant_get_string (variant, NULL), "dark") == 0)
     g_value_set_enum (value, ADW_COLOR_SCHEME_FORCE_DARK);
   else
     g_value_set_enum (value, ADW_COLOR_SCHEME_FORCE_LIGHT);
