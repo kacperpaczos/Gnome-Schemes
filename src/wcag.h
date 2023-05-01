@@ -18,6 +18,10 @@
 
 #pragma once
 
+#include <stdio.h>
+
 G_BEGIN_DECLS
+
+double calculate_wcag_contrast(const char* color1, const char* color2);
 
 G_END_DECLS

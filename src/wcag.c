@@ -18,3 +18,25 @@
 
 #include "config.h"
 
+#include "schemes-application.h"
+
+#include <stdio.h>
+
+double calculate_wcag_contrast(const char* color1, const char* color2) {
+    // Convert colors from hex format to RGB values
+    unsigned int r1, g1, b1;
+    sscanf(color1, "%2x%2x%2x", &r1, &g1, &b1);
+
+    unsigned int r2, g2, b2;
+    sscanf(color2, "%2x%2x%2x", &r2, &g2, &b2);
+
+    // Calculate color brightness in sRGB scale
+    double luminance1 = (0.2126 * r1 + 0.7152 * g1 + 0.0722 * b1) / 255.0;
+    double luminance2 = (0.2126 * r2 + 0.7152 * g2 + 0.0722 * b2) / 255.0;
+
+    // Calculate color contrast
+    double contrast = (luminance1 + 0.05) / (luminance2 + 0.05);
+
+    // Return the calculated contrast
+    return contrast;
+}
