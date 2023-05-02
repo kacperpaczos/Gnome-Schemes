@@ -22,6 +22,22 @@
 
 G_BEGIN_DECLS
 
-double calculate_wcag_contrast(const char* color1, const char* color2);
+// Shift all characters one position to the left if the first character is '#'.
+void removeHash(char hex_color);
+
+// Calculates the contrast between two colors.
+double calculate_wcag_contrast(const char *background_color, const char *foreground_color);
+
+// Check if the contrast for normal text meets the requirements of WCAG 2.0 Level AA
+bool isContrastValidWCAG2_0_AA(double contrast);
+
+// Check if the contrast for large text meets the requirements of WCAG 2.0 Level AA
+bool isLargeTextContrastValidWCAG2_0_AA(double contrast);
+
+// Check if the contrast for normal text meets the requirements of WCAG 2.0 Level AAA
+bool isContrastValidWCAG2_0_AAA(double contrast);
+
+// Check if the contrast for large text meets the requirements of WCAG 2.0 Level AAA
+bool isLargeTextContrastValidWCAG2_0_AAA(double contrast);
 
 G_END_DECLS
