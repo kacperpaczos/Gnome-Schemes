@@ -257,8 +257,8 @@ do_add_color (SchemesWindow *self)
 
   g_assert (SCHEMES_IS_WINDOW (self));
 
-  if (!gtk_widget_get_sensitive (GTK_WIDGET (self->add_color)))
-    return;
+  //if (!gtk_widget_get_sensitive (GTK_WIDGET (self->add_color)))
+  //  return;
 
   name = gtk_editable_get_text (GTK_EDITABLE (self->color_name));
   gdk_rgba_parse (&rgba, gtk_editable_get_text (GTK_EDITABLE (self->color_rgba)));
