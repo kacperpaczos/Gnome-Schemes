@@ -253,6 +253,8 @@ do_add_color (SchemesWindow *self)
 {
   g_autoptr(SchemesColor) color = NULL;
   const char *name;
+  const char *title;
+  const char *rgb_color;
   GdkRGBA rgba;
 
   g_assert (SCHEMES_IS_WINDOW (self));
@@ -260,8 +262,21 @@ do_add_color (SchemesWindow *self)
   //if (!gtk_widget_get_sensitive (GTK_WIDGET (self->add_color)))
   //  return;
 
+  g_object_get(GTK_EDITABLE (self->color_name), "title", &title, NULL);
   name = gtk_editable_get_text (GTK_EDITABLE (self->color_name));
-  gdk_rgba_parse (&rgba, gtk_editable_get_text (GTK_EDITABLE (self->color_rgba)));
+
+  // If the user doesn't give a name, use the default value for from title, "Name" for English, "Nazwa" for Polish, etc.
+  if (name == NULL || name[0] == '\0') {
+      name = title;
+  }
+
+  rgb_color = gtk_editable_get_text (GTK_EDITABLE (self->color_rgba));
+  if (rgb_color == NULL || rgb_color[0] == '\0') {
+      // TODO make default white or last color.
+      rgb_color = "white";
+
+  }
+  gdk_rgba_parse (&rgba, rgb_color);
 
   color = schemes_color_new (name, &rgba);
   schemes_scheme_add_color (self->scheme, color);
