@@ -202,8 +202,8 @@ update_add_color (SchemesWindow *self)
       (text = gtk_editable_get_text (GTK_EDITABLE (self->color_name))) &&
       text[0] != 0)
     gtk_widget_set_sensitive (GTK_WIDGET (self->add_color), TRUE);
-  else
-    gtk_widget_set_sensitive (GTK_WIDGET (self->add_color), FALSE);
+  //else
+    //gtk_widget_set_sensitive (GTK_WIDGET (self->add_color), FALSE);
 }
 
 static void
