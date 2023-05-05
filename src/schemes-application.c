@@ -37,6 +37,7 @@ G_DEFINE_TYPE (SchemesApplication, schemes_application, ADW_TYPE_APPLICATION)
 
 static const char *authors[] = {
   "Christian Hergert",
+  "Kacper Paczos",
   NULL
 };
 
