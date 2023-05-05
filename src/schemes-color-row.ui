@@ -4,7 +4,7 @@
     <property name="activatable-widget">button</property>
     <child type="prefix">
       <object class="GtkButton" id="remove">
-        <property name="icon-name">list-remove-symbolic</property>
+        <property name="icon-name">edit-delete-symbolic</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="tooltip-text" translatable="yes">Remove color from palette</property>
@@ -16,11 +16,9 @@
       </object>
     </child>
     <child type="suffix">
-      <object class="GtkLabel" id="label">
-        <property name="selectable">true</property>
-        <attributes>
-          <attribute name="family" value="Monospace"/>
-        </attributes>
+      <object class="AdwEntryRow" id="label">
+        <property name="title" translatable="yes">Name of color</property>
+        <signal name="changed" handler="on_remove_clicked_cb" swapped="true"/>
       </object>
     </child>
     <child>
