@@ -792,7 +792,7 @@ remove_color_row_cb (SchemesWindow   *self,
                      SchemesColorRow *row)
 {
   SchemesColor *color;
-
+  printf("usuwa\n");
   g_assert (SCHEMES_IS_WINDOW (self));
   g_assert (SCHEMES_IS_COLOR_ROW (row));
 

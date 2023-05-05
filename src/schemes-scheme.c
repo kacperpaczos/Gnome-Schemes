@@ -436,6 +436,7 @@ schemes_scheme_add_color (SchemesScheme *self,
                            G_CONNECT_SWAPPED);
 
   g_list_store_append (self->colors, color);
+  printf("abba");
   schemes_scheme_emit_changed (self);
 }
 
@@ -649,8 +650,21 @@ sort_color_func (gconstpointer a,
   SchemesColor *acolor = *(SchemesColor * const *)a;
   SchemesColor *bcolor = *(SchemesColor * const *)b;
 
-  return g_strcmp0 (schemes_color_get_name (acolor),
+  const gchar *str1 = "Hello";
+    const gchar *str2 = "World";
+
+   gint result = g_strcmp0 (schemes_color_get_name (acolor),
                     schemes_color_get_name (bcolor));
+
+    if (result < 0) {
+        printf("%s is less than %s\n", schemes_color_get_name (acolor), schemes_color_get_name (bcolor));
+    } else if (result > 0) {
+        printf("%s is greater than %s\n", schemes_color_get_name (acolor), schemes_color_get_name (bcolor));
+    } else {
+        printf("%s is equal to %s\n", schemes_color_get_name (acolor), schemes_color_get_name (bcolor));
+    }
+
+  return result;
 }
 
 static GPtrArray *
@@ -666,7 +680,7 @@ get_colors_sorted (GListStore *store)
   for (guint i = 0; i < n_items; i++)
     g_ptr_array_add (ret, g_list_model_get_item (G_LIST_MODEL (store), i));
   g_ptr_array_sort (ret, sort_color_func);
-
+  printf("dupa1");
   return ret;
 }
 

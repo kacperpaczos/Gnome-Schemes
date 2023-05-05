@@ -40,6 +40,7 @@ enum {
 };
 
 enum {
+  TEXT_CHANGED,
   COLOR_CHANGED,
   N_SIGNALS
 };

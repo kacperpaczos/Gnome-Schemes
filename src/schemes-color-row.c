@@ -26,7 +26,7 @@ struct _SchemesColorRow
 {
   AdwActionRow parent_instance;
   SchemesColor *color;
-  GtkLabel *label;
+  AdwEntryRow *label;
   GtkColorButton *button;
 };
 
@@ -178,8 +178,8 @@ schemes_color_row_init (SchemesColorRow *self)
 {
   gtk_widget_init_template (GTK_WIDGET (self));
 
-  g_object_bind_property_full (self->button, "rgba", self->label, "label", 0,
-                               rgba_to_string, NULL, NULL, NULL);
+  //g_object_bind_property_full (self->button, "rgba", self->label, "title", 0,
+  //                             rgba_to_string, NULL, NULL, NULL);
 }
 
 SchemesColor *
